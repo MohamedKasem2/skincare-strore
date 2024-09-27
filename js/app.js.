@@ -1,0 +1,21 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const cart = [];
+  
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  const cartItems = document.querySelector('.cart-items');
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const productCard = e.target.closest('.product-card');
+      const productName = productCard.querySelector('h3').textContent;
+      const productPrice = productCard.querySelector('p').textContent;
+      
+      const cartItem = document.createElement('div');
+      cartItem.innerHTML = `${productName} - ${productPrice}`;
+      cartItems.appendChild(cartItem);
+
+      cart.push({ name: productName, price: productPrice });
+      console.log(cart);
+    });
+  });
+});
